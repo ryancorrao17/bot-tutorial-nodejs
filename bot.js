@@ -1,7 +1,6 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
 var botID = process.env.BOT_ID;
-var list = [];
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
@@ -82,13 +81,14 @@ function postMessage(numVal) {
   });
   botReq.end(JSON.stringify(body));
 }
-
+var list = [];
 function addMember(name) {
   var splt = name.split();
   var firstname = splt[1];
   var lastname = splt[2];
   var isAlive = true;
   var member = {fn: firstname, ln: lastname, ia: isAlive};
+  list.push(member);
   postMessage(4);
 }
 

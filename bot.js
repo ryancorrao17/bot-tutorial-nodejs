@@ -29,7 +29,7 @@ function respond() {
   }
 }
 
-function postMessage(num) {
+function postMessage(var num) {
   var botResponse, options, body, botReq;
   if(num == 1) {
     botResponse = "****HELP MENU****""

@@ -1,7 +1,7 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
-
 var botID = process.env.BOT_ID;
+var list = [];
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
@@ -22,6 +22,11 @@ function respond() {
   } else if (request.text && help.test(request.text)) {
     this.res.writeHead(200);
     postMessage(1);
+    this.res.end();
+  } else if (request.text && addReq.test(request.text)) {
+    this.res.writeHead(200);
+    addMember(request.text);
+    this.res.end();
   } else {
     console.log("don't care");
     this.res.writeHead(200);
@@ -42,7 +47,7 @@ function postMessage(numVal) {
   } else if (numVal == 3) {
     botResponse = "Hi!";
   } else if (num == 4) {
-    botResponse = "";
+    botResponse = "addMember is working";
   } else {
     botResponse = "error 001: please tell ryan";
   }
@@ -76,6 +81,12 @@ function postMessage(numVal) {
     console.log('timeout posting message '  + JSON.stringify(err));
   });
   botReq.end(JSON.stringify(body));
+}
+
+function addMember(name){
+  var splt = name.split();
+  var member = {fn:splt[1], ln:splt[2]);
+  postMessage(4);
 }
 
 exports.respond = respond;

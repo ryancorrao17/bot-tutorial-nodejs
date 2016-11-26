@@ -2,7 +2,6 @@ var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
 
 var botID = process.env.BOT_ID;
-var list = [];
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
@@ -19,11 +18,6 @@ function respond() {
     this.res.writeHead(200);
     postAlive();
     this.res.end();
-  } else if (request.text && addReq.test(request.text)) {
-    this.res.writeHead(200);
-    add(request);
-    printList();
-    this.res.end();
   } else if (request.text && maxIsRetarded.test(request.text)) {
     this.res.writeHead(200);
     respondToMax(request);
@@ -32,12 +26,6 @@ function respond() {
     this.res.writeHead(200);
     this.res.end();
   }
-}
-
-function add(name) {
-  var tempList = name.split();
-  var tempPerson = {fn:tempList[1], ln:tempList[2]);
-  list.push(tempPerson);
 }
 
 function postMessage() {
@@ -74,50 +62,6 @@ function postMessage() {
   });
   botReq.end(JSON.stringify(body));
 }
-  
-function printList() {
-  var botResponse, options, body, botReq;
-
-  botResponse = "Max is a retard!";
-  
-  for(var i = 0; i < list.length; i++) {
-    var n;
-    for(n in list[i]) {
-      botResponse += n;
-      botResponse += "\n";
-    }
-  }
-
-  options = {
-    hostname: 'api.groupme.com',
-    path: '/v3/bots/post',
-    method: 'POST'
-  };
-
-  body = {
-    "bot_id" : botID,
-    "text" : botResponse
-  };
-
-  console.log('sending ' + botResponse + ' to ' + botID);
-
-  botReq = HTTPS.request(options, function(res) {
-      if(res.statusCode == 202) {
-        //neat
-      } else {
-        console.log('rejecting bad status code ' + res.statusCode);
-      }
-  });
-
-  botReq.on('error', function(err) {
-    console.log('error posting message '  + JSON.stringify(err));
-  });
-  botReq.on('timeout', function(err) {
-    console.log('timeout posting message '  + JSON.stringify(err));
-  });
-  botReq.end(JSON.stringify(body));
-}
-
 
 function postAlive() {
   var botResponse, options, body, botReq;

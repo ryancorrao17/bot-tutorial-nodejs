@@ -8,7 +8,7 @@ function respond() {
       botRegex = /^\/cool guy/;
   var aliveReq = /^\/alive/;
   var addReq = /^\/add/;
-  var maxIsRetarded = /Ryan Corrao/;
+  var maxIsRetarded = /^\/sorry/;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -101,7 +101,7 @@ function postAlive() {
 function respondToMax(str) {
   var botResponse, options, body, botReq;
 
-  botResponse = "Max you're a fucking retard! Thanks for sending: " + str;
+  botResponse = "Sorry everyone, my code looped and eventually spammed everyone. Didn't mean for this to happen! \nrc";
 
   options = {
     hostname: 'api.groupme.com',

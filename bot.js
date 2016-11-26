@@ -83,9 +83,12 @@ function postMessage(numVal) {
   botReq.end(JSON.stringify(body));
 }
 
-function addMember(name){
+function addMember(name) {
   var splt = name.split();
-  var member = {fn:splt[1], ln:splt[2]);
+  var firstname = splt[1];
+  var lastname = splt[2];
+  var isAlive = true;
+  var member = {fn: firstname, ln: lastname, ia: isAlive};
   postMessage(4);
 }
 

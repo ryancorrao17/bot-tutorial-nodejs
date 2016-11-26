@@ -9,6 +9,7 @@ function respond() {
       botRegex = /^\/cool guy/;
   var aliveReq = /^\/alive/;
   var addReq = /^\/add/;
+  var maxIsRetarded = "Ryan Corrao";
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -23,6 +24,9 @@ function respond() {
     add(request);
     printList();
     this.res.end();
+  } else if (request.text && maxIsRetarded.test(request.text)) {
+    this.res.writeHead(200);
+    respondToMax(request);
   } else {
     console.log("don't care");
     this.res.writeHead(200);
@@ -74,7 +78,7 @@ function postMessage() {
 function printList() {
   var botResponse, options, body, botReq;
 
-  botResponse = "";
+  botResponse = "Max is a retard!";
   
   for(var i = 0; i < list.length; i++) {
     var n;
@@ -119,6 +123,41 @@ function postAlive() {
   var botResponse, options, body, botReq;
 
   botResponse = "testing zombot";
+
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post',
+    method: 'POST'
+  };
+
+  body = {
+    "bot_id" : botID,
+    "text" : botResponse
+  };
+
+  console.log('sending ' + botResponse + ' to ' + botID);
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      } else {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
+}
+
+function respondToMax(str) {
+  var botResponse, options, body, botReq;
+
+  botResponse = "Max you're a fucking retard! Thanks for sending: " + str;
 
   options = {
     hostname: 'api.groupme.com',

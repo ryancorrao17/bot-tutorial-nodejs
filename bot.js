@@ -81,7 +81,7 @@ function postMessage(numVal) {
   });
   botReq.end(JSON.stringify(body));
 }
-var list = [];
+var memberList = [];
 function addMember(name) {
   var splt = name.split();
   var firstname = splt[1];

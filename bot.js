@@ -29,16 +29,17 @@ function respond() {
   }
 }
 
-function postMessage(var num) {
+function postMessage(numVal) {
   var botResponse, options, body, botReq;
-  if(num == 1) {
-    botResponse = "****HELP MENU****""
+  botResponse = "";
+  if(numVal == 1) {
+    botResponse = "****HELP MENU****"
                 + "\ncurrent functions include:"
                 + "\n//cool guy = displays a face"
                 + "\n//help = displays help menu";
-  } else if (num == 2) {
+  } else if (numVal == 2) {
     botResponse = cool();
-  } else if (num == 3) {
+  } else if (numVal == 3) {
     botResponse = "Hi, I'm zombot!";
   } else if (num == 4) {
     botResponse = "";

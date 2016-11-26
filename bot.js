@@ -8,7 +8,7 @@ function respond() {
       botRegex = /^\/cool guy/;
   var aliveReq = /^\/alive/;
   var addReq = /^\/add/;
-  var maxIsRetarded = "Ryan Corrao";
+  var maxIsRetarded = /Ryan Corrao/;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);

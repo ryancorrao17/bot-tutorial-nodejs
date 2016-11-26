@@ -88,7 +88,7 @@ function addMember(name) {
   var lastname = splt[2];
   var isAlive = true;
   var member = {fn: firstname, ln: lastname, ia: isAlive};
-  list.push(member);
+  memberList.push(member);
   postMessage(4);
 }
 

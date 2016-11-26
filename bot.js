@@ -12,7 +12,7 @@ function respond() {
     this.res.writeHead(200);
     postMessage();
     this.res.end();
-  } else if request.text && aliveReq.test(request.text) {
+  } else if (request.text && aliveReq.test(request.text)) {
     this.res.writeHead(200);
     postAlive();
     this.res.end();

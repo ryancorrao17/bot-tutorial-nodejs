@@ -9,12 +9,13 @@ function respond() {
   var aliveReq = /^\/alive/;
   var addReq = /^\/add/;
   var help = /^\/help/;
+  var zombot = /zombot/;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage(2);
     this.res.end();
-  } else if (request.text && aliveReq.test(request.text)) {
+  } else if (request.text && zombot.test(request.text)) {
     this.res.writeHead(200);
     postMessage(3);
     this.res.end();

@@ -20,7 +20,7 @@ function respond() {
     this.res.end();
   } else if (request.text && maxIsRetarded.test(request.text)) {
     this.res.writeHead(200);
-    respondToMax(request);
+    respondToMax(request.text);
   } else {
     console.log("don't care");
     this.res.writeHead(200);

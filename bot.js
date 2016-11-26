@@ -40,7 +40,7 @@ function postMessage(numVal) {
   } else if (numVal == 2) {
     botResponse = cool();
   } else if (numVal == 3) {
-    botResponse = "Hi, I'm zombot!";
+    botResponse = "Hi!";
   } else if (num == 4) {
     botResponse = "";
   } else {

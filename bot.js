@@ -10,6 +10,7 @@ function respond() {
     var addReq = /^\/add/;
     var help = /^\/help/;
     var zombot = /zombot/;
+    var kill = /^\/help/;
 
     if (request.text && botRegex.test(request.text)) {
         this.res.writeHead(200);
@@ -27,7 +28,11 @@ function respond() {
         this.res.writeHead(200);
         addMember(request.text);
         this.res.end();
-    } else {
+    }else if (request.text && kill.test(request.text)) {
+        this.res.writeHead(200);
+        removeMember(request.text);
+        this.res.end();
+    }else {
         console.log("don't care");
         this.res.writeHead(200);
         this.res.end();
@@ -132,6 +137,14 @@ function addMember(name) {
     var member = { fn: firstname, ln: lastname, alive: isAlive};
     memberList.push(member);
     postMessage(5);
+}
+function removeMember(name){
+    var splt = name.split(" ");
+    var firstname = splt[1];
+    var lastname = splt[2];
+    for(var i = 0; i < memberList.length; i++){
+        if(memberList[i].fn
+    }
 }
 
 exports.respond = respond;

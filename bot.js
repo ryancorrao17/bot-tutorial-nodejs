@@ -48,11 +48,48 @@ function postMessage(numVal) {
         botResponse = "Hi!";
     } else if (numVal == 4) {
         botResponse = "addMember is working";
+    } else if (numVal == 5) {
+        for (j = 0; j < memberList.length; j++) {
+            botResponse += memberList[j];
+        }
     } else {
         botResponse = "error 001: please tell ryan";
     }
 
 
+    options = {
+        hostname: 'api.groupme.com',
+        path: '/v3/bots/post',
+        method: 'POST'
+    };
+
+    body = {
+        "bot_id": botID,
+        "text": botResponse
+    };
+
+    console.log('sending ' + botResponse + ' to ' + botID);
+
+    botReq = HTTPS.request(options, function (res) {
+        if (res.statusCode == 202) {
+            //neat
+        } else {
+            console.log('rejecting bad status code ' + res.statusCode);
+        }
+    });
+
+    botReq.on('error', function (err) {
+        console.log('error posting message ' + JSON.stringify(err));
+    });
+    botReq.on('timeout', function (err) {
+        console.log('timeout posting message ' + JSON.stringify(err));
+    });
+    botReq.end(JSON.stringify(body));
+}
+
+function testString(str) {
+    var botResponse, options, body, botReq;
+    botResponse = str;
     options = {
         hostname: 'api.groupme.com',
         path: '/v3/bots/post',
@@ -90,7 +127,14 @@ function addMember(name) {
     var isAlive = true;
     var member = { fn: firstname, ln: lastname, alive: isAlive};
     memberList.push(member);
+    testString("Testing addMember functionality...");
     postMessage(4);
+    testString("Testing memberList print functionality...");
+    postMessage(5);
+    testString("Testing name storage...");
+    testString("Firstname:" + firstname);
+    testString("Lastname:" + lastname);
+    testString("isAlive?:" + isAlive);
 }
 
 exports.respond = respond;

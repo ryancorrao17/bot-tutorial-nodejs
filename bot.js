@@ -4,8 +4,8 @@ var botID = process.env.BOT_ID;
 var memberList = [];
 
 function respond() {
-    var request = JSON.parse(this.req.chunks[0]),
-        botRegex = /^\/cool guy/;
+    var request = JSON.parse(this.req.chunks[0]);
+    var botRegex = /^\/cool guy/;
     var aliveReq = /^\/alive/;
     var addReq = /^\/add/;
     var help = /^\/help/;
@@ -60,6 +60,7 @@ function postMessage(numVal) {
         botResponse = "addMember is working";
     } else if (numVal == 5) {
         for(var j = 0; j<memberList.length; j++){
+            
             botResponse += memberList[j].fn + " " + memberList[j].ln;
             if(memberList[j].alive)
                 botResponse += " is a HUMAN\n";
@@ -141,9 +142,9 @@ function addMember(name) {
     var isAlive = true;
     var member = { fn: firstname, ln: lastname, alive: isAlive};
     memberList.push(member);
-    postMessage(5);
 }
-function killMember(name){
+
+function killMember(name) {
     var splt = name.split(" ");
     var firstname = splt[1];
     var lastname = splt[2];

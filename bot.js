@@ -25,7 +25,7 @@ function respond() {
         this.res.end();
     } else if (request.text && addReq.test(request.text)) {
         this.res.writeHead(200);
-        addMember(request.text);
+        addMember(request);
         this.res.end();
     } else {
         console.log("don't care");
@@ -121,9 +121,9 @@ function testString(str) {
 }
 
 function addMember(name) {
-    var splt = name.split().text;
-    var firstname = splt[1].text;
-    var lastname = splt[2].text;
+    var splt = name.split();
+    var firstname = splt[1];
+    var lastname = splt[2];
     var isAlive = true;
     var member = { fn: firstname, ln: lastname, alive: isAlive};
     memberList.push(member);

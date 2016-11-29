@@ -40,8 +40,8 @@ function postMessage(numVal) {
     if (numVal == 1) {
         botResponse = "****HELP MENU****"
                     + "\ncurrent functions include:"
-                    + "\n//cool guy = displays a face"
-                    + "\n//help = displays help menu";
+                    + "\n/cool guy = displays a face"
+                    + "\n/help = displays help menu";
     } else if (numVal == 2) {
         botResponse = cool();
     } else if (numVal == 3) {

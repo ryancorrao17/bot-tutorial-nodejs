@@ -33,7 +33,7 @@ function respond() {
         this.res.writeHead(200);
         killMember(request.text);
         this.res.end();
-    } else if (request.text && displayList.test(request.test)) {
+    } else if (request.text && displayList.test(request.text)) {
         this.res.writeHead(200);
         postMessage(5);
         this.res.end();

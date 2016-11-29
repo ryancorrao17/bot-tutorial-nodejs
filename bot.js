@@ -25,7 +25,7 @@ function respond() {
         this.res.end();
     } else if (request.text && addReq.test(request.text)) {
         this.res.writeHead(200);
-        addMember(request);
+        addMember(request.text);
         this.res.end();
     } else {
         console.log("don't care");

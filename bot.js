@@ -10,8 +10,7 @@ function respond() {
     var addReq = /^\/add/;
     var help = /^\/help/;
     var zombot = /zombot/;
-    testString("First:" + request);
-    testString("Second:" + request.text);
+
     if (request.text && botRegex.test(request.text)) {
         this.res.writeHead(200);
         postMessage(2);
@@ -120,7 +119,7 @@ function testString(str) {
 }
 
 function addMember(name) {
-    var splt = name.split();
+    var splt = name.split(" ");
     var firstname = splt[1];
     var lastname = splt[2];
     var isAlive = true;

@@ -131,7 +131,6 @@ function addMember(name) {
     var isAlive = true;
     var member = { fn: firstname, ln: lastname, alive: isAlive};
     memberList.push(member);
-    postMessage(4);
     postMessage(5);
 }
 

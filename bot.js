@@ -49,7 +49,9 @@ function postMessage(numVal) {
     } else if (numVal == 4) {
         botResponse = "addMember is working";
     } else if (numVal == 5) {
-        botResponse = "O.K.";
+        for(var j = 0; j<memberList.length; j++){
+            botResponse += memberList[j].fn + memberList[j].ln;
+        }
     } else {
         botResponse = "error 001: please tell ryan";
     }
@@ -125,14 +127,8 @@ function addMember(name) {
     var isAlive = true;
     var member = { fn: firstname, ln: lastname, alive: isAlive};
     memberList.push(member);
-    testString("Testing addMember functionality...");
     postMessage(4);
-    testString("Testing memberList print functionality...");
     postMessage(5);
-    testString("Testing name storage...");
-    testString("Firstname:" + firstname);
-    testString("Lastname:" + lastname);
-    testString("isAlive?:" + isAlive);
 }
 
 exports.respond = respond;

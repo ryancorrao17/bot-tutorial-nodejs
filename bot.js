@@ -50,7 +50,7 @@ function postMessage(numVal) {
         botResponse = "addMember is working";
     } else if (numVal == 5) {
         for(var j = 0; j<memberList.length; j++){
-            botResponse += memberList[j].fn + memberList[j].ln;
+            botResponse += memberList[j].fn + memberList[j].ln + "\n";
         }
     } else {
         botResponse = "error 001: please tell ryan";

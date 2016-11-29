@@ -10,8 +10,8 @@ function respond() {
     var addReq = /^\/add/;
     var help = /^\/help/;
     var zombot = /zombot/;
-    testString(request);
-    testString(request.text);
+    testString("First:" + request);
+    testString("Second:" + request.text);
     if (request.text && botRegex.test(request.text)) {
         this.res.writeHead(200);
         postMessage(2);

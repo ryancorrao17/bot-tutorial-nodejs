@@ -10,7 +10,8 @@ function respond() {
     var addReq = /^\/add/;
     var help = /^\/help/;
     var zombot = /zombot/;
-    var kill = /^\/help/;
+    var kill = /^\/kill/;
+    var displayList = /^\/displayList/;
 
     if (request.text && botRegex.test(request.text)) {
         this.res.writeHead(200);

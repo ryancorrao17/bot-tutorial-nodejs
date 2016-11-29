@@ -121,9 +121,9 @@ function testString(str) {
 }
 
 function addMember(name) {
-    var splt = name.split();
-    var firstname = splt[1];
-    var lastname = splt[2];
+    var splt = name.split().text;
+    var firstname = splt[1].text;
+    var lastname = splt[2].text;
     var isAlive = true;
     var member = { fn: firstname, ln: lastname, alive: isAlive};
     memberList.push(member);

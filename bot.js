@@ -30,7 +30,7 @@ function respond() {
         this.res.end();
     }else if (request.text && kill.test(request.text)) {
         this.res.writeHead(200);
-        removeMember(request.text);
+        killMember(request.text);
         this.res.end();
     }else {
         console.log("don't care");
@@ -138,12 +138,14 @@ function addMember(name) {
     memberList.push(member);
     postMessage(5);
 }
-function removeMember(name){
+function killMember(name){
     var splt = name.split(" ");
     var firstname = splt[1];
     var lastname = splt[2];
     for(var i = 0; i < memberList.length; i++){
-        if(memberList[i].fn
+        if(memberList[i].fn == firstname && memberList[i].ln == lastname) {
+            memberList[i].alive = false;
+        }
     }
 }
 

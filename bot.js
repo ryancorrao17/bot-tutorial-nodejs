@@ -29,11 +29,15 @@ function respond() {
         this.res.writeHead(200);
         addMember(request.text);
         this.res.end();
-    }else if (request.text && kill.test(request.text)) {
+    } else if (request.text && kill.test(request.text)) {
         this.res.writeHead(200);
         killMember(request.text);
         this.res.end();
-    }else {
+    } else if (request.text && displayList.test(request.test)) {
+        this.res.writeHead(200);
+        postMessage(5);
+        this.res.end();
+    } else {
         console.log("don't care");
         this.res.writeHead(200);
         this.res.end();

@@ -132,8 +132,8 @@ function addMember(name) {
     testString("Testing memberList print functionality...");
     postMessage(5);
     testString("Testing name storage...");
-    testString("Firstname:" + firstname);
-    testString("Lastname:" + lastname);
+    testString("Firstname:" + firstname.text);
+    testString("Lastname:" + lastname.text);
     testString("isAlive?:" + isAlive);
 }
 

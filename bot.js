@@ -10,7 +10,8 @@ function respond() {
     var addReq = /^\/add/;
     var help = /^\/help/;
     var zombot = /zombot/;
-
+    testString(request);
+    testString(request.text);
     if (request.text && botRegex.test(request.text)) {
         this.res.writeHead(200);
         postMessage(2);
@@ -49,9 +50,7 @@ function postMessage(numVal) {
     } else if (numVal == 4) {
         botResponse = "addMember is working";
     } else if (numVal == 5) {
-        for (j = 0; j < memberList.length; j++) {
-            botResponse += memberList[j];
-        }
+        botResponse = "O.K.";
     } else {
         botResponse = "error 001: please tell ryan";
     }
@@ -132,8 +131,8 @@ function addMember(name) {
     testString("Testing memberList print functionality...");
     postMessage(5);
     testString("Testing name storage...");
-    testString("Firstname:" + firstname.text);
-    testString("Lastname:" + lastname.text);
+    testString("Firstname:" + firstname);
+    testString("Lastname:" + lastname);
     testString("isAlive?:" + isAlive);
 }
 
